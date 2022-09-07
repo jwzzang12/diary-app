@@ -1,0 +1,25 @@
+.diaryItem {
+  width: 80%;
+  .info {
+    position: relative;
+    dl {
+      display: flex;
+    }
+    .btns {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+  .contents {
+    border: 1px solid #111;
+    padding: 10px;
+  }
+  textarea {
+    width: 100%;
+    resize: none;
+    border: 1px solid #111;
+    font-family: inherit;
+    padding: 10px;
+  }
+}
