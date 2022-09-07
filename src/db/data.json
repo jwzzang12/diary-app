@@ -1,0 +1,6 @@
+{
+  "diary": [
+    { "id": 1, "writer": "나", "contents": "ㅎㅇ", "emotion": 1, "date": 456545 },
+    { "id": 2, "writer": "나", "contents": "ㅎㅇ", "emotion": 1, "date": 456545 }
+  ]
+}
