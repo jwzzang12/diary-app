@@ -1,5 +1,8 @@
 import { useRef, useState } from "react";
-export default function DiaryEditior({ insertDiary }) {
+import { useDispatch, useSelector } from "react-redux";
+import { insertDiary } from "../store/diary";
+
+export default function DiaryEditior() {
   // const [writer, setWriter] = useState("안녕");
   // const [contents, setContents] = useState("초기값");
   // const [emotion, setEmotion] = useState(1);
@@ -12,6 +15,8 @@ export default function DiaryEditior({ insertDiary }) {
   const writerRef = useRef();
   const contentsRef = useRef();
   //ref 사용한 이유는 focus 주려고!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.count);
   const insertDiaryItem = function () {
     if (diaryItem.writer.length < 2) {
       alert("최소 2글자");
@@ -22,8 +27,7 @@ export default function DiaryEditior({ insertDiary }) {
       contentsRef.current.focus();
       return false;
     }
-    //자식이 부모에게 데이터 전달하는 방법
-    insertDiary(diaryItem.writer, diaryItem.contents, diaryItem.emotion);
+    dispatch(insertDiary({ id: count + 1, date: new Date().getTime(), ...diaryItem }));
     alert("일기 저장됨");
     setDiaryItem({
       writer: "",

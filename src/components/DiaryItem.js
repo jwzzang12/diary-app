@@ -1,9 +1,11 @@
 import { useRef, useState } from "react";
-
-export default function DiaryItem({ diaryInfo, deleteDiary, modifyDiary }) {
+import { useDispatch } from "react-redux";
+import { deleteDiary, modifyDiary } from "../store/diary";
+export default function DiaryItem({ diaryInfo }) {
   const [isEdit, setIsEdit] = useState(false);
   const [localContents, setLocalContents] = useState(diaryInfo.contents);
   const contentsRef = useRef();
+  const dispatch = useDispatch();
   return (
     <li className="diaryItem">
       <div className="info">
@@ -30,7 +32,7 @@ export default function DiaryItem({ diaryInfo, deleteDiary, modifyDiary }) {
                     contentsRef.current.focus();
                     return;
                   }
-                  modifyDiary(diaryInfo.id, localContents);
+                  dispatch(modifyDiary(diaryInfo.id, localContents));
                   setIsEdit(false);
                 }}
               >
@@ -60,7 +62,7 @@ export default function DiaryItem({ diaryInfo, deleteDiary, modifyDiary }) {
                 className="btn"
                 onClick={() => {
                   if (window.confirm("Are you sure?")) {
-                    deleteDiary(diaryInfo.id);
+                    dispatch(deleteDiary(diaryInfo.id));
                   }
                 }}
               >

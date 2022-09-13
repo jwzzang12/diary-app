@@ -1,6 +1,6 @@
 import DiaryItem from "./DiaryItem";
 
-export default function DiaryList({ diaryList, deleteDiary, modifyDiary }) {
+export default function DiaryList({ diaryList }) {
   const total = diaryList.length;
   return (
     <div className="diaryList">
@@ -10,7 +10,7 @@ export default function DiaryList({ diaryList, deleteDiary, modifyDiary }) {
       </div>
       <ul>
         {diaryList.map((item, idx) => {
-          return <DiaryItem key={idx} diaryInfo={item} deleteDiary={deleteDiary} modifyDiary={modifyDiary} />;
+          return <DiaryItem key={idx} diaryInfo={item} />;
           //부모에서 자식 까지 타고내려가는 것 = props drilling
         })}
       </ul>
